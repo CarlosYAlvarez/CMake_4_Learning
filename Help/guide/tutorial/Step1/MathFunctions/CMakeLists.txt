@@ -1,2 +1,16 @@
-# TODO12: Move all the MathFunctions target commands to this CMakeLists.txt.
-#         Ensure that all paths are updated to be relative to this new location.
+set(TARGET MathFunctions)
+
+add_library(${TARGET})
+
+target_sources(${TARGET}
+    PRIVATE
+        MathFunctions.cxx
+        
+    PUBLIC
+        FILE_SET mathFunctionsHeaders
+        TYPE HEADERS
+        BASE_DIRS
+            .
+        FILES
+            ./MathFunctions.h
+)

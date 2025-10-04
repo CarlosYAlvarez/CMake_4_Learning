@@ -19,3 +19,10 @@
 #          #include <MathFunctions.h>
 
 # TODO13: Add the MathFunctions subdirectory to the project
+
+cmake_minimum_required(VERSION 3.23)
+
+project(StepOneProject)
+
+add_subdirectory(MathFunctions)
+add_subdirectory(Tutorial)
