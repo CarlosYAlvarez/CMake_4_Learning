@@ -4,8 +4,6 @@
 #include <iostream>
 #include <string>
 
-// TODO8: Include the MathFunctions header
-
 int main(int argc, char* argv[])
 {
   if (argc < 2) {

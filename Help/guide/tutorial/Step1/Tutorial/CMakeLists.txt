@@ -13,5 +13,5 @@ target_sources(${TARGET}
 
 target_link_libraries(${TARGET}
     PRIVATE
-        MathFunctions
+        MathFuncLib
 )

@@ -1,4 +1,4 @@
-set(TARGET MathFunctions)
+set(TARGET MathFuncLib)
 
 add_library(${TARGET})
 
