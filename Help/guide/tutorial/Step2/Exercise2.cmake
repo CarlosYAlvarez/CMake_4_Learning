@@ -5,6 +5,15 @@ function(FilterFoo OutVar)
 # TODO3: Search all the variables in the argument list passed to FilterFoo,
 #        and place those containing "Foo" into the list named by "OutVar"
 
+  message("OutVar list contains: ${${OutVar}}")
+  message("ARGN list contains: ${ARGN}")
+
+  foreach(item IN LISTS ARGN)
+    if(item MATCHES Foo)
+      list(APPEND ${OutVar} ${item})
+    endif()
+  endforeach()
+
   set(${OutVar} ${${OutVar}} PARENT_SCOPE)
 endfunction()
 
@@ -32,6 +41,7 @@ endif()
 
 set(InList FooBar BarBaz FooBaz BazBar QuxFoo BazQux)
 
+message("calling filterfoo")
 FilterFoo(OutList ${InList})
 
 if(NOT DEFINED OutList)
