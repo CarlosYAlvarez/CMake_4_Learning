@@ -27,14 +27,19 @@ set(Expected "Alpha;Beta;Gamma;Delta")
 #################
 # Testing Macro #
 #################
+# Reset list
 set(BeginList ${Original})
 set(EndList "Alpha")
 
+# Append "Delta" to BeginList list
 MacroAppend(BeginList "Delta")
+
+# Append the values of BeginList list to EndList list
 foreach(value IN LISTS BeginList)
   MacroAppend(EndList ${value})
 endforeach()
 
+# Check if BeginList list was correctly appended to
 if(BeginList STREQUAL Original)
   message("MacroAppend unimplemented or did nothing")
 elseif(NOT EndList STREQUAL Expected)
