@@ -3,12 +3,15 @@ cmake_minimum_required(VERSION 3.23)
 
 # TODO1: Implement MacroAppend
 macro(MacroAppend ListVar Value)
-
+  set(${ListVar} "${${ListVar}};${Value}")
 endmacro()
 
 # TODO2: Call MacroAppend, then return the value from FuncAppend
 function(FuncAppend ListVar Value)
-
+  MacroAppend(${ListVar} ${Value})
+  set(${ListVar} "${${ListVar}}" PARENT_SCOPE) # Use PARENT_SCOPE to affect the
+                                               # variable belonging to the caller's
+                                               # context.
 endfunction()
 
 
@@ -21,6 +24,9 @@ endif()
 set(Original "Beta;Gamma")
 set(Expected "Alpha;Beta;Gamma;Delta")
 
+#################
+# Testing Macro #
+#################
 set(BeginList ${Original})
 set(EndList "Alpha")
 
@@ -37,6 +43,9 @@ else()
   message("MacroAppend correct")
 endif()
 
+#################
+# Testing Funct #
+#################
 set(BeginList ${Original})
 set(EndList "Alpha")
 
