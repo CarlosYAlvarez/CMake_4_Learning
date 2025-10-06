@@ -5,7 +5,7 @@ function(FilterFoo OutVar)
 # TODO3: Search all the variables in the argument list passed to FilterFoo,
 #        and place those containing "Foo" into the list named by "OutVar"
 
-  message("OutVar list contains: ${${OutVar}}")
+  message("${OutVar} list contains: ${${OutVar}}")
   message("ARGN list contains: ${ARGN}")
 
   foreach(item IN LISTS ARGN)
@@ -40,9 +40,8 @@ if(SKIP_TESTS)
 endif()
 
 set(InList FooBar BarBaz FooBaz BazBar QuxFoo BazQux)
-
-message("calling filterfoo")
-FilterFoo(OutList ${InList})
+FilterFoo(OutList ${InList}) #First argument (OutList) will be passed/assigned to the parameter
+                             #OutVar. The second argument (${InList}) will all be under ARGN
 
 if(NOT DEFINED OutList)
   message("FilterFoo unimplemented or does nothing")
