@@ -41,7 +41,14 @@ else()
     )
 endif()
 
-# Tells the linker where to look for libraries when you later call target_link_libraries()
+# target_link_directories tells the linker where to look for
+#     libraries when you later call target_link_libraries().
+#     Equivalent to passing an -L flags to the linker.
+#     Basically just adds search paths, but does not perform
+#     any linking by itself
+#
+# target_link_libraries specifies which libraries to link against
+#     your target.
 #[[
 target_link_directories(${TARGET}
     PUBLIC
