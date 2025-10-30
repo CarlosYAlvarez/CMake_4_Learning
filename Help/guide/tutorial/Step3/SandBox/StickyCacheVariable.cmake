@@ -1,10 +1,13 @@
-cmake_minimum_required(VERSION 3.23)
-
-project(SandBox)
+# The names created by -D flags and option() are not normal variables, they are cache variables.
+# Cache variables are globally visible variables which are sticky, their value is difficult to
+# change after it is initially set. In fact they are so sticky that, in project mode, CMake will
+# save and restore cache variables across multiple configurations. If a cache variable is set once,
+# it will remain until another -D flag preempts the saved variable.
 
 ########################
 # Non-cached variables #
 ########################
+# By default this is a NON-CACHED variable.
 # The -D option only works with cached variables. The following
 # is not a cached variable so running the following command will
 # NOT override the default value: cmake -B build -DNON_CACHE_VAR="New value"
@@ -22,7 +25,7 @@ message("NON_CACHE_VAR is set to: ${NON_CACHE_VAR}")
 ###############################
 # The names created by -D flags and option() are cache variables.
 # If a cache variable is set once, it will remain until another
-# -D flag preempts the saved variable. Cached varailbes are persistent
+# -D flag preempts the saved variable. Cached variables are persistent
 # accross re-configurations
 option(COMPRESSION_SOFTWARE_USE_ZLIB "Support Zlib compression" OFF)
 option(COMPRESSION_SOFTWARE_USE_ZSTD "Support Zstd compression" OFF)
@@ -46,7 +49,7 @@ endif()
 # command:
 # cmake -B build -DStickyCacheVariable="CMD line always wins."
 set(StickyCacheVariable "I will not change" CACHE STRING "")
-set(StickyCacheVariable "Overwrite StickyCache" CACHE STRING "")
+set(StickyCacheVariable "Overwrite StickyCache" CACHE STRING "") # Aadd FORCE at the end to force variable to be overriden
 
 message("StickyCacheVariable: ${StickyCacheVariable}")
 
