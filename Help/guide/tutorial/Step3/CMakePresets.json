@@ -5,9 +5,14 @@
       "name": "tutorial",
       "displayName": "Tutorial Preset",
       "description": "Preset to use with the tutorial",
-      "TODO8": "Set the build directory",
+      "binaryDir": "${sourceDir}/build",
       "cacheVariables": {
-        "TODO9": "Set the C++ standard version"
+        "CMAKE_C_COMPILER": "/usr/bin/gcc-13",
+        "CMAKE_CXX_COMPILER": "/usr/bin/g++-13",
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_CXX_STANDARD": "20",
+        "CMAKE_CXX_EXTENSIONS": "ON",
+        "TUTORIAL_BUILD_UTILITIES": "OFF"
       }
     }
   ]

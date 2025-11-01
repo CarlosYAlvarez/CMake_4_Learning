@@ -14,7 +14,7 @@ option(TUTORIAL_BUILD_UTILITIES "Support building tutorial code" ON)
 #        otherwise truthy).
 
 if(TUTORIAL_BUILD_UTILITIES)
-  message("Building tutorial")
+  message("Building tutorial exec")
   add_subdirectory(Tutorial)
 endif()
 
